@@ -1,13 +1,27 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
+cd
 # z to jump around directories
 source ~/z/z.sh
 
 # open tmux at the start of each session
-if [ -z "$TMUX" ]; then
-  tmux new-session -As $(basename $SHELL)
+# Check if tmux is installed
+if command -v tmux &>/dev/null; then
+    # Check if already inside a tmux session
+    if [ -n "$TMUX" ]; then
+        echo "Already inside a tmux session. Skipping tmux initialization."
+    # If not inside a tmux session, check for active sessions
+    elif [ -n "$(tmux ls 2>/dev/null)" ]; then
+        tmux attach
+    # If no active sessions, prompt to create a new one
+    else
+        read -p "Enter the name for the new tmux session: " session_name
+        tmux new -s "$session_name"
+    fi
+# If tmux is not installed, display a message
+else
+    echo "Tmux is not installed. Unable to start a tmux session."
 fi
 
 # tab completion
