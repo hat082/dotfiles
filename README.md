@@ -25,7 +25,20 @@ https://www.youtube.com/watch?v=2OHrTQVlRMg
 exa 
 bat 
 ripgrep
-fzf 
-zoxide 
 entr
 midnight commander
+
+### fzf
+
+#### Installation
+
+```bash
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+
+### zoxide
+
+```bash
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+```
