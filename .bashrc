@@ -3,6 +3,7 @@
 # for examples
 # z to jump around directories
 source ~/z/z.sh
+xmodmap ~/.xmodmap
 
 # open tmux at the start of each session
 # Check if tmux is installed
