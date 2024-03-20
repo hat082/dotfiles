@@ -1,8 +1,11 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+
 # z to jump around directories
-source ~/z/z.sh
+eval "$(zoxide init bash)"
+
+# change binding cpas lock and esc
 xmodmap ~/.xmodmap
 
 # open tmux at the start of each session
