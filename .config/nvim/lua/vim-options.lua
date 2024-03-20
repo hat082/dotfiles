@@ -8,3 +8,11 @@ vim.g.mapleader = " "
 vim.cmd("set number")
 vim.cmd("set relativenumber")
 
+-- set system clipboard
+vim.o.clipboard = "unnamedplus"
+
+-- ignorecase
+vim.o.ignorecase = true
+
+-- Neovim default updatetime is 4000
+vim.opt.updatetime = 200

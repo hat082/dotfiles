@@ -5,7 +5,12 @@ return {
 	config = function()
 		require("smoothcursor").setup({
 			type = "matrix",
-			threshold = 1,
+			threshold = 0,
+			matrix = {
+				body = {
+					length = 6,
+				},
+			},
 		})
 	end,
 }
