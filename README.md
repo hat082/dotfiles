@@ -5,10 +5,16 @@ My dotfiles
 clear cache
 
 ```bash
+
 rm -rf ~/.local/share/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.cache/nvim
+
 ```
+
+find all available functions for lsp
+:h vim.lsp.buf
+
 
 create a user config
 
