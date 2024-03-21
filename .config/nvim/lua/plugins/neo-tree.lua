@@ -8,15 +8,26 @@ return {
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   config = function()
-    vim.keymap.set('n', '<leader>e', ':Neotree focus filesystem left<CR>')
-    require('neo-tree').setup({
+    vim.keymap.set("n", "<leader>e", ":Neotree focus filesystem left<CR>")
+    require("neo-tree").setup({
+      auto_close = true,
+      diagnostics = {
+        enable = true,
+      },
       window = {
+        position = "left",
+        width = 40,
+        mapping_options = {
+          noremap = true,
+          nowait = true,
+        },
         mappings = {
-          ['<leader>e'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
-          ['<leader>b'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
-          ['<leader>g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
+          -- Custom mappings for the tree window
+          ["h"] = "close_node",
+          ["l"] = "open",
+          ["<CR>"] = "open",
         },
       },
     })
-  end
+  end,
 }
