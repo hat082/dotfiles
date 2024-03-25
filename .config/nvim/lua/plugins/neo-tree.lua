@@ -8,7 +8,7 @@ return {
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   config = function()
-    vim.keymap.set("n", "<leader>e", ":Neotree focus filesystem left<CR>")
+    vim.keymap.set("n", "<leader>e", ":Neotree toggle filesystem left<CR>", {noremap = true, silent = true})
     require("neo-tree").setup({
       auto_close = true,
       diagnostics = {
