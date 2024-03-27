@@ -8,24 +8,24 @@ eval "$(zoxide init bash)"
 # change binding cpas lock and esc
 xmodmap ~/.xmodmap
 
-# open tmux at the start of each session
-# Check if tmux is installed
-if command -v tmux &>/dev/null; then
-    # Check if already inside a tmux session
-    if [ -n "$TMUX" ]; then
-        echo "Already inside a tmux session. Skipping tmux initialization."
-    # If not inside a tmux session, check for active sessions
-    elif [ -n "$(tmux ls 2>/dev/null)" ]; then
-        tmux attach
-    # If no active sessions, prompt to create a new one
-    else
-        read -p "Enter the name for the new tmux session: " session_name
-        tmux new -s "$session_name"
-    fi
-# If tmux is not installed, display a message
-else
-    echo "Tmux is not installed. Unable to start a tmux session."
-fi
+# # open tmux at the start of each session
+# # Check if tmux is installed
+# if command -v tmux &>/dev/null; then
+#     # Check if already inside a tmux session
+#     if [ -n "$TMUX" ]; then
+#         echo "Already inside a tmux session. Skipping tmux initialization."
+#     # If not inside a tmux session, check for active sessions
+#     elif [ -n "$(tmux ls 2>/dev/null)" ]; then
+#         tmux attach
+#     # If no active sessions, prompt to create a new one
+#     else
+#         read -p "Enter the name for the new tmux session: " session_name
+#         tmux new -s "$session_name"
+#     fi
+# # If tmux is not installed, display a message
+# else
+#     echo "Tmux is not installed. Unable to start a tmux session."
+# fi
 
 # tab completion
 bind 'set completion-ignore-case on'
@@ -143,3 +143,4 @@ if ! shopt -oq posix; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[[ -e ~/bin ]] && export PATH=$PATH:~/bin
