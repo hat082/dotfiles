@@ -2,10 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# z to jump around directories
-eval "$(zoxide init bash)"
 
-z() {
+zf() {
   cd "$(zoxide query -- --fzf)"
 }
 
@@ -44,6 +42,15 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+
+ov() {
+  local selected_file
+  selected_file=$(find . -type f -name ".*" -o -name "*" | fzf)
+  if [ -n "$selected_file" ]; then
+    nvim "$selected_file"
+  fi
+}
+
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -149,6 +156,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# z to jump around directories
+eval "$(zoxide init bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -e ~/bin ]] && export PATH=$PATH:~/bin
