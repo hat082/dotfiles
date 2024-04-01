@@ -5,6 +5,14 @@
 # z to jump around directories
 eval "$(zoxide init bash)"
 
+z() {
+  cd "$(zoxide query -- --fzf)"
+}
+
+
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
+
 # change binding cpas lock and esc
 xmodmap ~/.xmodmap
 
