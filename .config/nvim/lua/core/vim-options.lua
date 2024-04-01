@@ -1,3 +1,13 @@
+-- colorscheme options
+-- nightfly background and foreground colors in Neovim floating windows
+vim.g.nightflyNormalFloat = true
+
+-- make transparent
+vim.g.nightflyTransparent = true
+
+-- Color the cursor
+vim.g.nightflyCursorColor = true
+
 -- tabs & indentation
 vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 vim.opt.shiftwidth = 2 -- 2 spaces for indent width
