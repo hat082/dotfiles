@@ -41,9 +41,10 @@ return {
 		-- Set menu
 		startify.section.top_buttons.val = {
 			startify.button("e", " > New File", "<cmd>ene<CR>"),
-			startify.button("SPC ee", " > Toggle file explorer"),
+			startify.button("SPC ee", " > Toggle File Explorer"),
 			startify.button("SPC sf", " > Find File", "<cmd>Telescope find_files<CR>"),
 			startify.button("SPC sg", " > Find Word", "<cmd>Telescope live_grep<CR>"),
+			startify.button("SPC ec", " > Edit Config Files"),
 		}
 
 		-- Send config to alpha

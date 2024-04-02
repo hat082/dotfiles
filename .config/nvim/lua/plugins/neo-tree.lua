@@ -10,10 +10,11 @@ return {
 	config = function()
 		vim.keymap.set("n", "<leader>ee", ":Neotree toggle filesystem left<CR>", { noremap = true, silent = true })
 		require("neo-tree").setup({
-			auto_close = true,
+			close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 			diagnostics = {
 				enable = true,
 			},
+
 			window = {
 				position = "left",
 				width = 35,
@@ -26,6 +27,14 @@ return {
 					["h"] = "close_node",
 					["l"] = "open",
 					["<CR>"] = "open",
+				},
+			},
+
+			filesystem = {
+				filtered_items = {
+					visible = true, -- when true, they will just be displayed differently than normal items
+					hide_dotfiles = true,
+					hide_gitignored = true,
 				},
 			},
 		})
