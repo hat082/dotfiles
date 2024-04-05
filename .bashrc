@@ -162,3 +162,6 @@ eval "$(zoxide init bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -e ~/bin ]] && export PATH=$PATH:~/bin
+
+# starship
+eval "$(starship init bash)"
