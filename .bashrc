@@ -45,12 +45,13 @@ esac
 
 ov() {
   local selected_file
-  selected_file=$(find . -type f -name ".*" -o -name "*" | fzf)
+  local ignore_files
+  ignore_files=$(cat ~/dotfiles/ov_ignore 2>/dev/null | tr '\n' '|' | sed 's/|$//')
+  selected_file=$(find . -type f | grep -E -v "$ignore_files" | fzf --reverse)
   if [ -n "$selected_file" ]; then
     nvim "$selected_file"
   fi
 }
-
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
