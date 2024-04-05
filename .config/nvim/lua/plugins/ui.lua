@@ -1,18 +1,18 @@
 return {
-	{ -- smoothcursor
-		"gen740/smoothcursor.nvim",
-		config = function()
-			require("smoothcursor").setup({
-				type = "matrix",
-				threshold = 0,
-				matrix = {
-					body = {
-						length = 6,
-					},
-				},
-			})
-		end,
-	},
+	-- { -- smoothcursor
+	-- 	"gen740/smoothcursor.nvim",
+	-- 	config = function()
+	-- 		require("smoothcursor").setup({
+	-- 			type = "matrix",
+	-- 			threshold = 0,
+	-- 			matrix = {
+	-- 				body = {
+	-- 					length = 6,
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 	{ -- whichkey
 		"folke/which-key.nvim",
 		event = "vimenter", -- sets the loading event to 'vimenter'
