@@ -2,9 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=$PATH:/home/pi/.local/bin
-export _ZO_ECHO=1
-
 # change binding cpas lock and esc
 xmodmap ~/.xmodmap
 
@@ -153,11 +150,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# z to jump around directories
-eval "$(zoxide init bash --cmd cd)"
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -e ~/bin ]] && export PATH=$PATH:~/bin
 
 # starship
 eval "$(starship init bash)"
+
+# z to jump around directories
+export _ZO_ECHO=1
+eval "$(zoxide init bash)"
