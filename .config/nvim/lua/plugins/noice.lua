@@ -9,14 +9,26 @@ return {
 		"rcarriga/nvim-notify",
 	},
 	config = function()
-		require("noice").setup()
+		require("noice").setup({
+			presets = {
+        -- show lsp hovering borders
+				lsp_doc_border = true,
+        -- show @ recording
+				routes = {
+					{
+						view = "notify",
+						filter = { event = "msg_showmode" },
+					},
+				},
+			},
+		})
 		require("notify").setup({
 			stages = "static",
 			background_colour = "#000000",
 			fps = 5,
 			timeout = 5000,
-			render = "compact",
-			max_width = 50,
+			render = "wrapped-compact",
+			max_width = 100,
 		})
 	end,
 }

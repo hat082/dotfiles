@@ -110,14 +110,14 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-        ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+        ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+        ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         -- ["<C-n>"] = cmp.mapping.complete(), -- show completion suggestions
         -- ["<C-h>"] = cmp.mapping.abort(), -- close completion window
         -- ["<C-l>"] = cmp.mapping.confirm({ select = false }),
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
         -- supertab
         ["<Tab>"] = cmp.mapping(function(fallback)
           if luasnip.expandable() then

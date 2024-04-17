@@ -2,6 +2,8 @@
 -- nightfly background and foreground colors in Neovim floating windows
 vim.g.nightflyNormalFloat = true
 
+vim.g.nightflyVirtualTextColor = true
+
 -- make transparent
 vim.g.nightflyTransparent = true
 

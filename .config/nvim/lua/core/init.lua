@@ -17,3 +17,4 @@
 require("core.vim-options")
 require("core.autocommmands")
 require("core.mappings")
+require("core.usercmds")

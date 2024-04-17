@@ -4,20 +4,13 @@ return {
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- load the colorscheme here
-			--
 			vim.cmd.colorscheme("nightfly")
-
-			-- nightfly background and foreground colors in Neovim popups
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = "single",
-			})
-
-			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
-
-				border = "single",
-			})
-			vim.diagnostic.config({ float = { border = "single" } })
-
+			-- local noice = require("noice")
+			-- noice.setup({
+			-- 	presets = {
+			-- 		lsp_doc_border = true,
+			-- 	},
+			-- })
 			-- nightfly background and foreground colors in Neovim command line
 			local winhighlight = {
 				winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
