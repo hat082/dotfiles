@@ -1,8 +1,7 @@
-\documentclass{article}[11pt]
+\documentclass{report}[11pt]
 
-% *** CITATION PACKAGES ***
-\usepackage[style=ieee]{biblatex} 
-\bibliography{bib.bib}    %your file created using JabRef
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{~/texmf/bibtex/bib/Zotero.bib}
 
 \input{preamble.tex}
 
@@ -11,5 +10,7 @@
 \newpage
 \tableofcontents
 \newpage
+
+\printbibliography
 
 \end{document}
