@@ -43,6 +43,11 @@ return {
       capabilities = default,
     })
 
+    --configure clangd server
+    lspconfig["clangd"].setup({
+      capabilities = default,
+    })
+
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = default,

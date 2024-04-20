@@ -119,7 +119,8 @@ return {
         -- ["<C-l>"] = cmp.mapping.confirm({ select = false }),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         -- supertab
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        -- ["<Tab>"] = cmp.mapping(function(fallback)
+        ["jk"] = cmp.mapping(function(fallback)
           if luasnip.expandable() then
             luasnip.expand()
           elseif luasnip.locally_jumpable(1) then

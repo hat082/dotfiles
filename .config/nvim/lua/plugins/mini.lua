@@ -17,6 +17,10 @@ return {
 			-- - sd'   - [s]urround [d]elete [']quotes
 			-- - sr)'  - [s]urround [r]eplace [)] [']
 			require("mini.surround").setup()
+
+			require("mini.indentscope").setup({})
+
+			require("mini.cursorword").setup({})
 		end,
 	},
 }
