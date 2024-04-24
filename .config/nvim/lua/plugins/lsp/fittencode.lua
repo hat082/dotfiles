@@ -1,7 +1,6 @@
-
-	return {
-		"luozhiya/fittencode.nvim",
-		config = function()
-			require("fittencode").setup()
-		end,
-	}
+return {
+	"luozhiya/fittencode.nvim",
+	config = function()
+		require("fittencode").setup()
+	end,
+}
