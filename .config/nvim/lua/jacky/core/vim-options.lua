@@ -11,9 +11,9 @@ vim.g.nightflyTransparent = true
 vim.g.nightflyCursorColor = true
 
 -- tabs & indentation
-vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
-vim.opt.shiftwidth = 2 -- 2 spaces for indent width
-vim.opt.expandtab = true -- expand tab to spaces
+vim.opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
+vim.opt.shiftwidth = 2    -- 2 spaces for indent width
+vim.opt.expandtab = true  -- expand tab to spaces
 vim.opt.autoindent = true -- copy indent from current line when starting new one
 
 -- Enable relative line numbering
@@ -86,7 +86,7 @@ vim.opt.hlsearch = true
 -- (have to use iterm2 or any other true color terminal)
 vim.opt.termguicolors = true
 vim.opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-vim.opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+vim.opt.signcolumn = "yes"  -- show sign column so that text doesn't shift
 
 -- turn off swapfile
 vim.opt.swapfile = false

@@ -44,6 +44,11 @@ ov() {
   fi
 }
 
+oo () {
+  cd "/mnt/c/Users/jacky/OneDrive - The University of Nottingham Ningbo China/Obsidian"
+  nvim .
+}
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

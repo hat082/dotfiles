@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ import = "jacky.plugins" },
 	{ import = "jacky.plugins.lsp" },
+	{ import = "jacky.plugins.debug" },
 }, {
 	install = {
 		colorscheme = { "nightfly" },

@@ -1,11 +1,20 @@
 return {
   "hrsh7th/nvim-cmp",
+  dependencies = {
+    "hrsh7th/cmp-buffer",           -- source for text in buffer
+    "hrsh7th/cmp-path",             -- source for file system paths
+    "L3MON4D3/LuaSnip",             -- snippet engine
+    "saadparwaiz1/cmp_luasnip",     -- for autocompletion
+    "rafamadriz/friendly-snippets", -- useful snippets
+    "onsails/lspkind.nvim",         -- vs-code like pictograms
+    "hrsh7th/cmp-cmdline",
+    "petertriho/cmp-git",
+    "f3fora/cmp-spell",
+    "micangl/cmp-vimtex",
+    -- "aspeddro/cmp-pandoc.nvim",
+  },
   config = function()
-    local cmp = require('cmp')
-    local cmp_format = require('lsp-zero').cmp_format({ details = true })
-
     local cmp = require("cmp")
-
     local luasnip = require("luasnip")
 
     local kind_icons = {
@@ -76,14 +85,14 @@ return {
             fallback()
           end
         end, { "i", "s" }),
-          -- BONEYARD
-          -- if luasnip.expand_or_locally_jumpable() then
-          --   luasnip.expand_or_jump()
-          -- elseif luasnip.locally_jumpable() then
-          --   luasnip.jump()
-          --   cmp.confirm()
-          -- elseif has_words_before() then
-          --  cmp.complete()
+        -- BONEYARD
+        -- if luasnip.expand_or_locally_jumpable() then
+        --   luasnip.expand_or_jump()
+        -- elseif luasnip.locally_jumpable() then
+        --   luasnip.jump()
+        --   cmp.confirm()
+        -- elseif has_words_before() then
+        --  cmp.complete()
         ["<S-Tab>"] = cmp.mapping(function() -- could be: function(fallback) -- OR: function(delete-two-spaces????)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -123,14 +132,15 @@ return {
         -- { name = "orgmode" },
         -- { name = "pandoc" },
         -- { name = "omni" },
-        { name = "buffer", keyword_length = 3 }, -- text within current buffer
-        { name = "spell",
+        { name = "buffer",  keyword_length = 3 }, -- text within current buffer
+        {
+          name = "spell",
           keyword_length = 4,
           option = {
-              keep_all_entries = false,
-              enable_in_context = function()
-                  return true
-              end
+            keep_all_entries = false,
+            enable_in_context = function()
+              return true
+            end
           },
         },
         { name = "path" },
@@ -152,18 +162,19 @@ return {
           border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         },
       },
-      -- performance = {
-      --    trigger_debounce_time = 500,
-      --    throttle = 550,
-      --    fetching_timeout = 80,
-      -- },
+      performance = {
+        max_view_entries = 10
+        --    trigger_debounce_time = 500,
+        --    throttle = 550,
+        --    fetching_timeout = 80,
+      },
     })
 
     -- `/` cmdline setup.
     cmp.setup.cmdline('/', {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
-        {name = 'buffer'}
+        { name = 'buffer' }
       }
     })
 
@@ -171,8 +182,8 @@ return {
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
-        {name = 'path'},
-        {name = 'cmdline'}
+        { name = 'path' },
+        { name = 'cmdline' }
       }
     })
   end
