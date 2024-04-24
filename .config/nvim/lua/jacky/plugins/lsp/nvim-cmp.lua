@@ -1,68 +1,13 @@
 return {
   "hrsh7th/nvim-cmp",
-  event = { "InsertEnter", "CmdlineEnter" },
-  dependencies = {
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path", -- source for file system paths
-    "L3MON4D3/LuaSnip", -- snippet engine
-    "saadparwaiz1/cmp_luasnip", -- for autocompletion
-    -- "rafamadriz/friendly-snippets", -- useful snippets
-    -- "onsails/lspkind.nvim", -- vs-code like pictograms
-    "hrsh7th/cmp-cmdline",
-    "petertriho/cmp-git",
-    "f3fora/cmp-spell",
-    "micangl/cmp-vimtex",
-    -- "aspeddro/cmp-pandoc.nvim",
-  },
   config = function()
-
-    -- local check_backspace = function()
-    --   local col = vim.fn.col "." - 1
-    --   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-    -- end
-
-    -- local vimtex_icons = {
-    --     a = "󰧮",
-    --     B = "󰧮",
-    --     c = "󱓷",
-    --     article = "󰧮",
-    --     book = "",
-    --     incollection = "󱓷",
-    --   }
-    --
-    -- local test_fn = function(name, str)
-    --   if str == nil then
-    --       return ""
-    --   end
-    --   if name then
-    --       return ""
-    --   end
-    --
-    --   local type = ((str:match("^%[(.-)%]")):gsub("%[", "")):gsub("%]", "")
-    --   if vimtex_icons[type] ~= nil then
-    --     logger(string.find(str, "^%[(.-)%]"))
-    --     str = string.gsub(str, "^%[(.-)%]", "[" .. vimtex_icons[type] .. "]")
-    --   end
-    --
-    --   return str
-    -- end
+    local cmp = require('cmp')
+    local cmp_format = require('lsp-zero').cmp_format({ details = true })
 
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
 
-    -- NOTE: don't use this in supertab
-    -- local has_words_before = function()
-    --   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    --   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
-    -- end
-
-    -- local lspkind = require("lspkind") -- goes with lspkind.nvim above
-
-    -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-    -- require("luasnip.loaders.from_vscode").lazy_load()
-
-    --   פּ ﯟ   some other good icons
     local kind_icons = {
       article = "󰧮",
       book = "",
@@ -198,20 +143,20 @@ return {
         entries = 'custom',
       },
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-        -- completion = {
-        --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        -- },
-        -- documentation = {
-        --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        -- },
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+        completion = {
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        },
+        documentation = {
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        },
       },
-      performance = {
-         trigger_debounce_time = 500,
-         throttle = 550,
-         fetching_timeout = 80,
-      },
+      -- performance = {
+      --    trigger_debounce_time = 500,
+      --    throttle = 550,
+      --    fetching_timeout = 80,
+      -- },
     })
 
     -- `/` cmdline setup.
@@ -230,6 +175,7 @@ return {
         {name = 'cmdline'}
       }
     })
+  end
 
-  end,
+
 }
