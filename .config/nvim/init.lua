@@ -1,3 +1,2 @@
-require("core")
-
-require("lazy-setup")
+require("jacky.core")
+require("jacky.lazy-setup")

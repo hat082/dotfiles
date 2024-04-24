@@ -14,7 +14,7 @@
 -- load_core_files()
 --
 
-require("core.vim-options")
-require("core.autocommmands")
-require("core.mappings")
-require("core.usercmds")
+require("jacky.core.vim-options")
+require("jacky.core.autocommmands")
+require("jacky.core.keymaps")
+require("jacky.core.usercmds")
