@@ -46,7 +46,10 @@ ov() {
 
 oo () {
   cd "/mnt/c/Users/jacky/OneDrive - The University of Nottingham Ningbo China/Obsidian"
-  nvim .
+}
+
+start () {
+  explorer.exe .
 }
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -134,6 +137,8 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias lg='lazygit'
+alias thresh='python3 ~/coursework/tests_py/slider.py'
+
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
