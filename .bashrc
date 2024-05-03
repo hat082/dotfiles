@@ -163,6 +163,8 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -e ~/bin ]] && export PATH=$PATH:~/bin
 
+# set -o vi
+
 # starship
 eval "$(starship init bash)"
 
