@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+
+
 # change binding cpas lock and esc
 xmodmap ~/.xmodmap
 
@@ -138,6 +140,7 @@ alias l='ls -CF'
 
 alias lg='lazygit'
 alias thresh='python3 ~/coursework/tests_py/slider.py'
+alias v='nvim'
 
 
 # Alias definitions.
@@ -169,5 +172,7 @@ fi
 eval "$(starship init bash)"
 
 # z to jump around directories
-export _ZO_ECHO=1
-eval "$(zoxide init bash)"
+export _ZO_ECHO=0
+# eval "$(zoxide init bash)"
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(zoxide init bash --cmd cd)"
