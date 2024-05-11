@@ -47,6 +47,8 @@ function create_latex_document()
 
   create_file_from_template("coverpage.tex", "coverpage.tex")
 
+  create_file_from_template("macros.tex", "macros.tex")
+
 	-- Create the 'bib.bib' file (empty for this example)
 	local bib_file = io.open("bib.bib", "w")
 	if not bib_file then

@@ -154,6 +154,45 @@ return {
     )
   ),
 
+  -- a custom listing cmd
+  s(
+    { trig = "^ls", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    -- Using a multiline string for the equation snippet
+    fmta(
+      [[
+      \lst{<>}
+
+   ]],
+      { i(1) }
+    )
+  ),
+
+-- a custom figure command
+  s(
+    { trig = "^fi", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    -- Using a multiline string for the equation snippet
+    fmta(
+      [[
+      \fig[<>]{<>}
+
+   ]],
+      { i(1), i(2) }
+    )
+  ),
+
+-- a custom figure command that prints figures side by side
+  s(
+    { trig = "^fi", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    -- Using a multiline string for the equation snippet
+    fmta(
+      [[
+      \sbs{<>}
+
+   ]],
+      { i(1) }
+    )
+  ),
+
   -- create \begin{} \end{} snippet
   s(
     { trig = "^beg", snippetType = "autosnippet", wordTrig = false, regTrig = true },
@@ -172,6 +211,7 @@ return {
   ),
 
   -- Example use of insert node placeholder text
+  -- creating a hyperref href{}{}
   s(
     { trig = "hr", dscr = "The hyperref package's href{}{} command (for url links)" },
     fmta([[\href{<>}{<>}]], {
@@ -192,6 +232,23 @@ return {
   s(
     { trig = "tt", dscr = "Expands 'tt' into LaTeX's texttt{} command." },
     fmta("\\texttt{<>}", {
+      -- dynamic_node: see :help luasnip-dynamicnode
+      d(1, get_visual),
+    })
+  ),
+
+
+  s(
+    { trig = "re", dscr = "Expands 're' into LaTeX's Cref command." },
+    fmta("\\Cref{<>}", {
+      -- dynamic_node: see :help luasnip-dynamicnode
+      d(1, get_visual),
+    })
+  ),
+
+  s(
+    { trig = "ci", dscr = "Expands 'ci' into LaTeX's cite{} command." },
+    fmta("\\cite{<>}", {
       -- dynamic_node: see :help luasnip-dynamicnode
       d(1, get_visual),
     })
