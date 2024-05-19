@@ -1,0 +1,6 @@
+[window.padding]
+x = 15
+y = 15
+
+[shell]
+program = "/bin/zsh"
