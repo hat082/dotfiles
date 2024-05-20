@@ -2,9 +2,7 @@ return {
   "lervag/vimtex",
   init = function()
     vim.opt.syntax = "enable"
-    vim.g["vimtex_view_method"] =
-    "zathura"                                      -- main variant with xdotool (requires X11; not compatible with wayland)
-    -- vim.g['vimtex_view_method'] = 'zathura_simple' -- for variant without xdotool to avoid errors in wayland
+    vim.g.vimtex_view_method = "zathura"
     vim.g["vimtex_quickfix_mode"] = 0              -- suppress error reporting on save and build
     vim.g["vimtex_mappings_enabled"] = 1           -- Ignore mappings
     vim.g["vimtex_indent_enabled"] = 1             -- Auto Indent
@@ -29,14 +27,14 @@ return {
       ["accents"] = 0,
       ["ligatures"] = 0,
       ["cites"] = 0,
-      ["fancy"] = 1,
+      ["fancy"] = 0,
       ["spacing"] = 0,
-      ["greek"] = 1,
+      ["greek"] = 0,
       ["math_bounds"] = 0,
-      ["math_delimiters"] = 1,
-      ["math_fracs"] = 1,
-      ["math_super_sub"] = 1,
-      ["math_symbols"] = 1,
+      ["math_delimiters"] = 0,
+      ["math_fracs"] = 0,
+      ["math_super_sub"] = 0,
+      ["math_symbols"] = 0,
       ["styles"] = 0,
     }
   end,

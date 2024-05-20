@@ -1,0 +1,15 @@
+return {}
+  -- { -- smoothcursor
+  -- 	"gen740/smoothcursor.nvim",
+  -- 	config = function()
+  -- 		require("smoothcursor").setup({
+  -- 			type = "matrix",
+  -- 			threshold = 0,
+  -- 			matrix = {
+  -- 				body = {
+  -- 					length = 6,
+  -- 				},
+  -- 			},
+  -- 		})
+  -- 	end,
+  -- },

@@ -3,16 +3,10 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- vim.api.nvim_set_keymap("n", "<F5>", ":cd build/; make ./test<CR>", { noremap = true, silent = true })
---
---
 -- Open Neovim config directory
 keymap.set("n", "<leader>ec", ":e ~/.config/nvim/<CR>", { noremap = true, silent = true, desc = { "Edit Config" } })
-
--- Diagnostic keymaps
-
-
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+keymap.set("n", "<leader>q", ":wqa!<CR>", {desc = {"Write all and quit"}})
 
 -- Window Management
 keymap.set("n", "<leader>pv", "<C-w>v", { desc = "Split Pane Vertically" })
@@ -38,3 +32,6 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+-- nvim notify
+

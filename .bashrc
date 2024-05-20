@@ -139,8 +139,9 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias lg='lazygit'
-alias thresh='python3 ~/coursework/tests_py/slider.py'
+# alias thresh='python3 ~/coursework/tests_py/slider.py'
 alias v='nvim'
+alias c='clear'
 
 
 # Alias definitions.
@@ -173,6 +174,7 @@ eval "$(starship init bash)"
 
 # z to jump around directories
 export _ZO_ECHO=0
-# eval "$(zoxide init bash)"
 export PATH="$HOME/.local/bin:$PATH"
 eval "$(zoxide init bash --cmd cd)"
+
+# unimatrix -s 98 -c green -l 'k' -w

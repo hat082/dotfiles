@@ -17,8 +17,8 @@ vim.opt.expandtab = true  -- expand tab to spaces
 vim.opt.autoindent = true -- copy indent from current line when starting new one
 
 -- Enable relative line numbering
-vim.cmd("set number")
-vim.cmd("set relativenumber")
+vim.opt.relativenumber = true
+vim.opt.number = true
 
 -- ignorecase
 vim.o.ignorecase = true

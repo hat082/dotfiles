@@ -13,7 +13,10 @@ return {
   dependencies = {
     -- Required.
     "nvim-lua/plenary.nvim",
+    -- "godlygeek/tabular",
+    -- "preservim/vim-markdown",
   },
+
   config = function()
     require("obsidian").setup({
       workspaces = {
@@ -33,5 +36,7 @@ return {
         },
       }
     })
+
+    vim.g["vim_markdown_no_default_key_mappings "] = 1
   end
 }

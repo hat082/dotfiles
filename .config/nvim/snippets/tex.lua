@@ -10,7 +10,6 @@ local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
--- This is the `get_visual` function I've been talking about.
 -- ----------------------------------------------------------------------------
 -- Summary: When `LS_SELECT_RAW` is populated with a visual selection, the function
 -- returns an insert node whose initial text is set to the visual selection.
@@ -44,6 +43,7 @@ tex_utils.in_tikz = function() -- TikZ picture environment detection
 end
 
 -------------------------------------------------------------------------------
+
 local get_visual = function(args, parent)
   if #parent.snippet.env.LS_SELECT_RAW > 0 then
     return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
@@ -52,32 +52,52 @@ local get_visual = function(args, parent)
   end
 end
 
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
--- Include this `in_mathzone` function at the start of a snippets file...
-local in_mathzone = function()
-  -- The `in_mathzone` function requires the VimTeX plugin
-  return vim.fn["vimtex#syntax#in_mathzone"]() == 1
+-- Function to create a LuaSnip snippet
+local function create_snippet(shortcut, snippet_text)
+  -- Create a snippet node with the given shortcut and text
+  local snippet = s({ trig = shortcut, snippetType = "autosnippet" }, {
+      t(snippet_text),
+    },
+    { condition = tex_utils.in_mathzone }
+  )
+  return snippet
 end
--- Then pass the table `{condition = in_mathzone}` to any snippet you want to
--- expand only in math contexts.
 
 -------------------------------------------------------------------------------
 --
 return {
   -- snippet to insert alpha beta gamma in math mode
   -- using autosnippet doesn't need to enter expand
-  s({ trig = ";a", snippetType = "autosnippet" }, {
+  create_snippet("al ", "\\alpha "),
+  create_snippet("be ", "\\beta"),
+  create_snippet("ga ", "\\gamma "),
+  create_snippet("de ", "\\delta "),
+  create_snippet("ep ", "\\epsilon "),
+  create_snippet("ze ", "\\zeta "),
+  create_snippet("et ", "\\eta "),
+  create_snippet("th ", "\\theta "),
+  create_snippet("io ", "\\iota "),
+  create_snippet("ka ", "\\kappa "),
+  create_snippet("la ", "\\lambda "),
+  create_snippet("mu ", "\\mu "),
+  create_snippet("nu ", "\\nu "),
+  create_snippet("xi ", "\\xi "),
+  create_snippet("pi ", "\\pi "),
+  create_snippet("rh ", "\\rho "),
+  create_snippet("si ", "\\sigma "),
+  create_snippet("ta ", "\\tau "),
+  create_snippet("up ", "\\upsilon "),
+  create_snippet("ph ", "\\phi "),
+  create_snippet("ch ", "\\chi "),
+  create_snippet("ps ", "\\psi "),
+  create_snippet("om ", "\\omega "),
 
-    t("\\alpha"),
-  }),
-  s({ trig = ";b", snippetType = "autosnippet" }, {
-    t("\\beta"),
-  }),
-  s({ trig = ";g", snippetType = "autosnippet" }, {
-    t("\\gamma"),
-  }),
+  create_snippet("cd ", "\\cdot "),
+  create_snippet("ti ", "\\times "),
 
+  -- fraction using fmt
   s(
     { trig = "//", dscr = "Create a frac", snippetType = "autosnippet" },
     -- Example: using fmt's `delimiters` key to manually specify angle brackets
@@ -91,6 +111,7 @@ return {
     )
   ),
 
+  -- fraction using fmta
   s(
     { trig = "^sec", snippetType = "autosnippet", wordTrig = false, regTrig = true },
     -- Using a multiline string for the equation snippet
@@ -104,6 +125,7 @@ return {
     )
   ),
 
+  -- subsection
   s(
     { trig = "^sub", snippetType = "autosnippet", wordTrig = false, regTrig = true },
     -- Using a multiline string for the equation snippet
@@ -117,6 +139,7 @@ return {
     )
   ),
 
+  -- subsubsection
   s(
     { trig = "^ssub", snippetType = "autosnippet", wordTrig = false, regTrig = true },
     -- Using a multiline string for the equation snippet
@@ -130,33 +153,53 @@ return {
     )
   ),
 
+  -- subscripts _{}
   s(
-    { trig = "^pr", wordTrig = false, regTrig = true },
+    { trig = "s",},
     -- Using a multiline string for the equation snippet
     fmta(
-      [[
-      \pr{<>}
-
-   ]],
+      [[_{<>} ]],
       { i(1) }
     )
+    , { condition = tex_utils.in_mathzone }
   ),
 
+  -- superscripts ^{}
   s(
-    { trig = "^sol", wordTrig = false, regTrig = true },
+    { trig = "S"},
     -- Using a multiline string for the equation snippet
     fmta(
-      [[
-      \sol{<>}
-
-   ]],
+      [[^{<>} ]],
       { i(1) }
     )
+    , { condition = tex_utils.in_mathzone }
   ),
 
-  -- a custom listing cmd
+  -- scientific notation \times 10^{}
   s(
-    { trig = "^ls", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    { trig = "e",},
+    -- Using a multiline string for the equation snippet
+    fmta(
+      [[\times 10^{<>} ]],
+      { i(1) }
+    )
+    , { condition = tex_utils.in_mathzone }
+  ),
+
+  -- units: \,\mathrm{(<>)}
+  s(
+    { trig = "u",},
+    -- Using a multiline string for the equation snippet
+    fmta(
+      [[\,(\mathrm{<>}) ]],
+      { i(1) }
+    )
+    , { condition = tex_utils.in_mathzone }
+  ),
+
+  -- a custom listing cmd \lst{}
+  s(
+    { trig = "^ls", wordTrig = false, regTrig = true, },
     -- Using a multiline string for the equation snippet
     fmta(
       [[
@@ -167,9 +210,9 @@ return {
     )
   ),
 
--- a custom figure command
+  -- a custom figure command \fig{}
   s(
-    { trig = "^fi", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    { trig = "^fi", wordTrig = false, regTrig = true, },
     -- Using a multiline string for the equation snippet
     fmta(
       [[
@@ -180,9 +223,9 @@ return {
     )
   ),
 
--- a custom figure command that prints figures side by side
+  -- a custom figure command that prints figures side by side \sbs{}
   s(
-    { trig = "^fi", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    { trig = "^sb", wordTrig = false, regTrig = true, },
     -- Using a multiline string for the equation snippet
     fmta(
       [[
@@ -210,6 +253,22 @@ return {
     )
   ),
 
+  -- create \begin{equation} snippet
+  s(
+    { trig = "^eq", snippetType = "autosnippet", wordTrig = false, regTrig = true },
+    fmta(
+      [[
+      \begin{equation*}
+      <>
+      \end{equation*}
+
+      ]],
+      {
+        i(1),
+      }
+    )
+  ),
+
   -- Example use of insert node placeholder text
   -- creating a hyperref href{}{}
   s(
@@ -221,6 +280,7 @@ return {
   ),
 
   -- Example: italic font implementing visual selection
+  -- textit{}
   s(
     { trig = "ti", dscr = "Expands 'ti' into LaTeX's textit{} command." },
     fmta("\\textit{<>}", {
@@ -229,6 +289,7 @@ return {
     })
   ),
 
+  -- texttt{}
   s(
     { trig = "tt", dscr = "Expands 'tt' into LaTeX's texttt{} command." },
     fmta("\\texttt{<>}", {
@@ -237,7 +298,7 @@ return {
     })
   ),
 
-
+  -- Cref{}
   s(
     { trig = "re", dscr = "Expands 're' into LaTeX's Cref command." },
     fmta("\\Cref{<>}", {
@@ -246,6 +307,7 @@ return {
     })
   ),
 
+  -- cite{}
   s(
     { trig = "ci", dscr = "Expands 'ci' into LaTeX's cite{} command." },
     fmta("\\cite{<>}", {
@@ -254,9 +316,9 @@ return {
     })
   ),
 
-  -- inline math block, but activates only if there are no characters directly connected to mm.
+  -- inline math block, but activates only if there are no characters directly connected to ma.
   s(
-    { trig = "([^%a])mm", snippetType = "autosnippet", wordTrig = false, regTrig = true },
+    { trig = "([^%a])ma", snippetType = "autosnippet", wordTrig = false, regTrig = true },
     fmta("<>$<>$", {
       f(function(_, snip)
         return snip.captures[1]
@@ -265,6 +327,7 @@ return {
     })
   ),
 
+  -- expands into pi@raspberrypi:~ $
   s(
     { trig = "^pi", wordTrig = false, regTrig = true },
     -- Using a multiline string for the equation snippet
@@ -277,16 +340,6 @@ return {
   ),
 
   -- create subscripts
-  -- s(
-  --   { trig = "([%a%)%]%}])ss", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-  --   fmta("<>_{<>}", {
-  --     f(function(_, snip)
-  --       return snip.captures[1]
-  --     end),
-  --     i(1),
-  --   })
-  -- ),
-
   -- s(
   --   { trig = "([%a%)%]%}])ss", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
   --   fmta("<>_{<>}", {
