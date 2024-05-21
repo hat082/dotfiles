@@ -166,6 +166,7 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -e ~/bin ]] && export PATH=$PATH:~/bin
+[[ -e /snap/bin/ ]] && export PATH=$PATH:/snap/bin
 
 # set -o vi
 
