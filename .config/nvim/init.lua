@@ -1,2 +1,2 @@
-require("jacky.core")
-require("jacky.lazy-setup")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
