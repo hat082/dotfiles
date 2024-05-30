@@ -1,5 +1,5 @@
 -- markdown specific settings
-vim.opt.warp = true
+vim.opt.wrap = true
 vim.opt.breakindent = true -- match indent on line break
 vim.opt.linebreak = true -- line break on whole words
 

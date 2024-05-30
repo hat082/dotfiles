@@ -1,12 +1,13 @@
-local keymap = vim.keymap
 -- leader and localleader options
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+local keymap = vim.keymap
+
 -- Open Neovim config directory
-keymap.set("n", "<leader>ec", ":e ~/.config/nvim/<CR>", { noremap = true, silent = true, desc = { "Edit Config" } })
+keymap.set("n", "<leader>ec", ":e ~/.config/nvim/<CR>", { noremap = true, silent = true, desc =  "Edit Config"})
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-keymap.set("n", "<leader>q", ":wqa!<CR>", {desc = {"Write all and quit"}})
+keymap.set("n", "<leader>q", ":wqa!<CR>", {desc = "Write all and quit"})
 
 -- Window Management
 keymap.set("n", "<leader>pv", "<C-w>v", { desc = "Split Pane Vertically" })
