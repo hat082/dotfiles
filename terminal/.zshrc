@@ -50,9 +50,8 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-
 # History
-HISTSIZE=5000
+HISTSIZE=1000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -87,5 +86,5 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # Shell integrations
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"

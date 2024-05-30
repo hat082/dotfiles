@@ -1,4 +1,0 @@
-# .bash_ignore file
-# Add patterns of files or directories to be ignored
-.git
-*.log
