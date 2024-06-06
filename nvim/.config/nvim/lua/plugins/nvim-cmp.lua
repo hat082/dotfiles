@@ -1,11 +1,17 @@
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    "hrsh7th/cmp-emoji",
+    -- TODO: install dependency when connected to internet
+    -- "hrsh7th/cmp-emoji",
   },
   ---@param opts cmp.ConfigSchema
   opts = function(_, opts)
     local cmp = require("cmp")
+
+    opts.window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    }
 
     -- snippet jumping using "jk"
     opts.mapping = vim.tbl_extend("force", opts.mapping, {
